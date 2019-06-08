@@ -9,6 +9,7 @@ import android.widget.EditText;
 
 import com.loyer.dagger.R;
 import com.loyer.dagger.base.common.BaseFragment;
+import com.loyer.dagger.data_manager.prefs.SharedPref;
 import com.loyer.dagger.data_manager.response_modalz.UserResponse;
 import com.loyer.dagger.ui.repositories_list_fragment.RepositoriesListFragment;
 
@@ -36,6 +37,9 @@ public class UserInfoFragment extends BaseFragment implements UserInfoContainer.
     @Inject
     UserInfoContainer.Presenter<UserInfoContainer.View> presenter;
 
+    @Inject
+    SharedPref pref;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -52,6 +56,7 @@ public class UserInfoFragment extends BaseFragment implements UserInfoContainer.
 
     @Override
     public void onUserLoaded(UserResponse userResponse) {
+        pref.saveUserName(userResponse.login);
         FragmentTransaction transaction = getFragmentManager().beginTransaction();
         transaction.replace(R.id.fl_container_fragment, RepositoriesListFragment.newInstance(userResponse.login))
                 .addToBackStack(RepositoriesListFragment.TAG)

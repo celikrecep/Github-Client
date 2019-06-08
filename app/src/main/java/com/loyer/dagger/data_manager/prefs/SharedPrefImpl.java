@@ -23,4 +23,10 @@ public class SharedPrefImpl implements SharedPref {
         SharedPreferences.Editor editor = sharedPref.edit();
         editor.putString(USERNAME, username).apply();
     }
+
+    @Override
+    public String getUsername() {
+        SharedPreferences editor = sharedPref;
+        return editor.getString(USERNAME,"");
+    }
 }

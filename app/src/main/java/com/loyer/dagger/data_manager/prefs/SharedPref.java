@@ -7,4 +7,5 @@ import javax.inject.Singleton;
  */
 public interface SharedPref {
     void saveUserName(String username);
+    String getUsername();
 }

@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 
 import com.loyer.dagger.R;
 import com.loyer.dagger.base.common.BaseFragment;
+import com.loyer.dagger.data_manager.prefs.SharedPref;
 import com.loyer.dagger.data_manager.response_modalz.RepositoryResponse;
 import com.loyer.dagger.ui.repositories_list_fragment.adapter.RepositoriesListAdapter;
 
@@ -43,6 +44,9 @@ public class RepositoriesListFragment extends BaseFragment implements Repositori
     @Inject
     RepositoriesListContainer.Presenter<RepositoriesListContainer.View> presenter;
     @Inject
+    SharedPref pref;
+
+    @Inject
     RepositoriesListAdapter adapter;
 
     private String username;
@@ -61,6 +65,7 @@ public class RepositoriesListFragment extends BaseFragment implements Repositori
     @Override
     public void onRepositoriesLoaded(List<RepositoryResponse> repositories) {
         adapter.updateRepositoriesList(repositories);
+        Log.d("LOYER", "username: " + pref.getUsername());
     }
 
     @Override

@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * Created by celikrecep on 8.06.2019.
  */
-public interface RepositoriesListContainer {
+public interface RepositoriesListCompact {
     interface View extends BaseFragmentView {
         void onRepositoriesLoaded(List<RepositoryResponse> repositories);
     }

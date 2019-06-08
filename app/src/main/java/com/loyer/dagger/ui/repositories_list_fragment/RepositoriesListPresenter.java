@@ -14,8 +14,8 @@ import javax.inject.Inject;
  * Created by celikrecep on 8.06.2019.
  */
 @FragmentScope
-public class RepositoriesListPresenter<V extends RepositoriesListContainer.View>
-extends BasePresenterImpl<V, RepositoriesListInteractor> implements RepositoriesListContainer.Presenter<V> {
+public class RepositoriesListPresenter<V extends RepositoriesListCompact.View>
+extends BasePresenterImpl<V, RepositoriesListInteractor> implements RepositoriesListCompact.Presenter<V> {
 
     @Inject
     public RepositoriesListPresenter(ConnectionManager connectionManager, RepositoriesListInteractor interactor) {

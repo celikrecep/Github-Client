@@ -12,8 +12,8 @@ import javax.inject.Inject;
  * Created by celikrecep on 8.06.2019.
  */
 @FragmentScope
-public class UserInfoPresenter<V extends UserInfoContainer.View>
-extends BasePresenterImpl<V, UserInfoInteractor> implements UserInfoContainer.Presenter<V> {
+public class UserInfoPresenter<V extends UserInfoCompact.View>
+extends BasePresenterImpl<V, UserInfoInteractor> implements UserInfoCompact.Presenter<V> {
 
     @Inject
     public UserInfoPresenter(ConnectionManager connectionManager, UserInfoInteractor interactor) {

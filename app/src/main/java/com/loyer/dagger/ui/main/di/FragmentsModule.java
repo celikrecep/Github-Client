@@ -4,12 +4,10 @@ import android.content.Context;
 
 import com.loyer.dagger.di.qualifiers.ActivityContext;
 import com.loyer.dagger.di.qualifiers.FragmentScope;
-import com.loyer.dagger.rx.clazz.ConnectionManagerImpl;
-import com.loyer.dagger.rx.interfaces.ConnectionManager;
-import com.loyer.dagger.ui.repositories_list_fragment.RepositoriesListContainer;
+import com.loyer.dagger.ui.repositories_list_fragment.RepositoriesListCompact;
 import com.loyer.dagger.ui.repositories_list_fragment.RepositoriesListPresenter;
 import com.loyer.dagger.ui.repositories_list_fragment.adapter.RepositoriesListAdapter;
-import com.loyer.dagger.ui.username_fragment.UserInfoContainer;
+import com.loyer.dagger.ui.username_fragment.UserInfoCompact;
 import com.loyer.dagger.ui.username_fragment.UserInfoPresenter;
 
 import dagger.Module;
@@ -23,16 +21,16 @@ public class FragmentsModule {
 
     @FragmentScope
     @Provides
-    public UserInfoContainer.Presenter<UserInfoContainer.View> provideUserInfoPresenter(
-            UserInfoPresenter<UserInfoContainer.View> presenter
+    public UserInfoCompact.Presenter<UserInfoCompact.View> provideUserInfoPresenter(
+            UserInfoPresenter<UserInfoCompact.View> presenter
     ) {
         return presenter;
     }
 
     @FragmentScope
     @Provides
-    public RepositoriesListContainer.Presenter<RepositoriesListContainer.View> provideRepositoriesListPresenter(
-            RepositoriesListPresenter<RepositoriesListContainer.View> presenter
+    public RepositoriesListCompact.Presenter<RepositoriesListCompact.View> provideRepositoriesListPresenter(
+            RepositoriesListPresenter<RepositoriesListCompact.View> presenter
     ) {
         return presenter;
     }

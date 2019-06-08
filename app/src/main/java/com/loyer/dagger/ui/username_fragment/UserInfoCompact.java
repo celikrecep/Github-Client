@@ -8,7 +8,7 @@ import com.loyer.dagger.ui.main.MainActivityInteractor;
 /**
  * Created by celikrecep on 8.06.2019.
  */
-public interface UserInfoContainer {
+public interface UserInfoCompact {
     interface View extends BaseFragmentView {
         void onUserLoaded(UserResponse userResponse);
     }

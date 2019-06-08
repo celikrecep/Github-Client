@@ -24,7 +24,7 @@ import butterknife.OnClick;
 /**
  * Created by celikrecep on 8.06.2019.
  */
-public class UserInfoFragment extends BaseFragment implements UserInfoContainer.View {
+public class UserInfoFragment extends BaseFragment implements UserInfoCompact.View {
     public static String TAG = "user_info_fragment";
 
     public static UserInfoFragment newInstance() {
@@ -35,7 +35,7 @@ public class UserInfoFragment extends BaseFragment implements UserInfoContainer.
     EditText etUsername;
 
     @Inject
-    UserInfoContainer.Presenter<UserInfoContainer.View> presenter;
+    UserInfoCompact.Presenter<UserInfoCompact.View> presenter;
 
     @Inject
     SharedPref pref;

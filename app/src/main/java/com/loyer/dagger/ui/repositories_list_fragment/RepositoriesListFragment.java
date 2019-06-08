@@ -26,7 +26,7 @@ import butterknife.BindView;
 /**
  * Created by celikrecep on 8.06.2019.
  */
-public class RepositoriesListFragment extends BaseFragment implements RepositoriesListContainer.View {
+public class RepositoriesListFragment extends BaseFragment implements RepositoriesListCompact.View {
     private static String USERNAME = "username";
     public static String TAG = "repositories_list_fragment";
 
@@ -42,7 +42,7 @@ public class RepositoriesListFragment extends BaseFragment implements Repositori
     RecyclerView rvRepositories;
 
     @Inject
-    RepositoriesListContainer.Presenter<RepositoriesListContainer.View> presenter;
+    RepositoriesListCompact.Presenter<RepositoriesListCompact.View> presenter;
     @Inject
     SharedPref pref;
 

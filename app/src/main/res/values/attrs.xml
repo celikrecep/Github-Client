@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <declare-styleable name="BottomBarItem">
+        <attr name="bottom_bar_position" format="enum">
+            <enum name="L" value="0"/>
+            <enum name="N" value="1"/>
+            <enum name="R" value="2"/>
+        </attr>
+    </declare-styleable>
+</resources>

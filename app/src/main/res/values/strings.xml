@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">DaggerExample</string>
+    <string name="endpoint">https://api.github.com</string>
+</resources>

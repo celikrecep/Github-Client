@@ -11,6 +11,7 @@ import com.loyer.dagger.R;
 import com.loyer.dagger.base.common.BaseFragment;
 import com.loyer.dagger.data_manager.prefs.SharedPref;
 import com.loyer.dagger.data_manager.response_modalz.UserResponse;
+import com.loyer.dagger.ui.main.NavigationListener;
 import com.loyer.dagger.ui.repositories_list_fragment.RepositoriesListFragment;
 
 import javax.inject.Inject;
@@ -40,11 +41,14 @@ public class UserInfoFragment extends BaseFragment implements UserInfoCompact.Vi
     @Inject
     SharedPref pref;
 
+    NavigationListener listener;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_user_info, container, false);
         bind(this, v);
+        setupListener();
         return v;
     }
 
@@ -83,8 +87,14 @@ public class UserInfoFragment extends BaseFragment implements UserInfoCompact.Vi
         presenter.unsubscribeConnections();
     }
 
+    private void setupListener() {
+        if (getParentFragment() != null && getParentFragment() instanceof NavigationListener)
+            listener = (NavigationListener) getParentFragment();
+    }
     @OnClick(R.id.btnShowRepositories)
     public void onViewClicked() {
-        presenter.onFetchUser(etUsername.getText().toString());
+        if (listener != null)
+            listener.onReplace();
+        //presenter.onFetchUser(etUsername.getText().toString());
     }
 }

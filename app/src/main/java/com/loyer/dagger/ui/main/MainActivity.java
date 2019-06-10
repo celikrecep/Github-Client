@@ -19,6 +19,9 @@ public class MainActivity extends DaggerAppCompatActivity implements MainActivit
     @Inject
     MainActivityContainer.Presenter<MainActivityContainer.View> presenter;
 
+    @Inject
+    NavigationManager navigationManager;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,10 +43,7 @@ public class MainActivity extends DaggerAppCompatActivity implements MainActivit
 
     @Override
     public void onBackPressed() {
-        RootFragment fragment = (RootFragment) getSupportFragmentManager().findFragmentByTag(RootFragment.TAG);
-        if (fragment.getFragmentManager().getBackStackEntryCount() != 0)
-            fragment.getFragmentManager().popBackStackImmediate();
-        else
-             super.onBackPressed();
+       if (!navigationManager.consumeBackPress())
+           super.onBackPressed();
     }
 }

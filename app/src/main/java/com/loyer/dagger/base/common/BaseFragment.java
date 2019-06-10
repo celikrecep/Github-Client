@@ -5,6 +5,8 @@ import android.view.View;
 import com.loyer.dagger.base.interfacezz.BaseView;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import dagger.android.support.DaggerFragment;
@@ -24,5 +26,34 @@ public class BaseFragment extends DaggerFragment implements BaseView {
         super.onDestroy();
         if (unbinder != null)
             unbinder.unbind();
+    }
+
+    public void showFragment(
+            FragmentManager manager,
+            FragmentTransactionContainer container,
+            Fragment fragment
+    ) {
+        FragmentTransaction transaction = manager.beginTransaction();
+        switch (container.getTransactionType()) {
+            case ADD:
+                transaction.add(container.getLayoutId(), fragment);
+            case REPLACE:
+                transaction.replace(container.getLayoutId(), fragment);
+        }
+        if(container.isBackStack()){
+            transaction.addToBackStack(container.getBackStackTag());
+        }
+
+        if(container.isHasAnimation()){
+          /*  transaction.setCustomAnimations(
+                    R.anim.enter_from_left,
+                    R.anim.exit_to_right,
+                    R.anim.enter_from_right,
+                    R.anim.exit_to_left
+            );*/
+        }
+
+        transaction.commit();
+        manager.executePendingTransactions();
     }
 }

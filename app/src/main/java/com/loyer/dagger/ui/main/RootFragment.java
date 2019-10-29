@@ -58,13 +58,13 @@ public class RootFragment extends StackOwnerFragment implements NavigationListen
     }
 
     @Override
-    public void onReplace() {
+    public void onReplace(String username) {
         showFragment(getChildFragmentManager(),
                 new FragmentTransactionContainer.Builder()
                 .setLayoutId(getHostLayoutId())
         .setTransactionType(FragmentTransactionContainer.TransactionType.REPLACE)
         .setHasAnimation(false)
         .setBackState(true, null)
-        .build(), RepositoriesListFragment.newInstance("celikrecep"));
+        .build(), RepositoriesListFragment.newInstance(username));
     }
 }

@@ -60,11 +60,8 @@ public class UserInfoFragment extends BaseFragment implements UserInfoCompact.Vi
 
     @Override
     public void onUserLoaded(UserResponse userResponse) {
-        pref.saveUserName(userResponse.login);
-        FragmentTransaction transaction = getFragmentManager().beginTransaction();
-        transaction.replace(R.id.fl_container_fragment, RepositoriesListFragment.newInstance(userResponse.login))
-                .addToBackStack(RepositoriesListFragment.TAG)
-                .commit();
+        if (listener != null)
+            listener.onReplace(userResponse.login);
     }
 
     @Override
@@ -93,8 +90,6 @@ public class UserInfoFragment extends BaseFragment implements UserInfoCompact.Vi
     }
     @OnClick(R.id.btnShowRepositories)
     public void onViewClicked() {
-        if (listener != null)
-            listener.onReplace();
-        //presenter.onFetchUser(etUsername.getText().toString());
+        presenter.onFetchUser(etUsername.getText().toString());
     }
 }
